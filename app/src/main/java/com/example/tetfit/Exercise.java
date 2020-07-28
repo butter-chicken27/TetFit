@@ -1,19 +1,20 @@
 package com.example.tetfit;
 
 public class Exercise {
-    private String title;
+    private String title, body_part, description, Yt_URL;
+    private float rating;
+    private int intensity;
     private int image_ID = NO_IMAGE_PROVIDED;
-    private int duration;
+    private int duration = 0;
     public static final int NO_IMAGE_PROVIDED = -1;
 
-    public Exercise(String t, int i, int d){
+    public Exercise(String t, String b, String d, String y, float r, int i){
         title = t;
-        image_ID = i;
-        duration = d;
-    }
-    public  Exercise(String t, int d){
-        title = t;
-        duration = d;
+        body_part = b;
+        description = d;
+        Yt_URL = y;
+        rating = r;
+        intensity = i;
     }
     public Boolean hasImage(){
         return  image_ID != NO_IMAGE_PROVIDED;
@@ -32,11 +33,11 @@ public class Exercise {
     }
 
     public void increaseDuration() {
-        duration += 5;
+        duration += 1;
     }
 
     public void decreaseDuration(){
         if(duration != 0)
-        duration -= 5;
+        duration -= 1;
     }
 }

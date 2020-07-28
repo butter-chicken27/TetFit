@@ -30,13 +30,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final ArrayList<Exercise> workout = new ArrayList<Exercise>();
-        workout.add(new Exercise("Crunches", 10));
-        workout.add(new Exercise("Pushups", 15));
-        workout.add(new Exercise("Plank", 30));
-        workout.add(new Exercise("Cobra", 30));
-        workout.add(new Exercise("Jumping Jacks", 25));
-        workout.add(new Exercise("Crunches", 10));
-        workout.add(new Exercise("Crunches", 10));
         final ExerciseAdapter adapter = new ExerciseAdapter(this, workout);
         final ListView listView = findViewById(R.id.list);
         listView.setAdapter(adapter);
