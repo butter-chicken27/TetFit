@@ -2,13 +2,13 @@ package com.example.tetfit;
 
 public class Exercise {
     private String title, body_part, description, Yt_URL;
-    private double rating;
+    private float rating;
     private int intensity;
     private int image_ID = NO_IMAGE_PROVIDED;
     private int duration = 0;
     public static final int NO_IMAGE_PROVIDED = -1;
 
-    public Exercise(String t, String b, String d, String y, double r, int i){
+    public Exercise(String t, String b, String d, String y, float r, int i){
         title = t;
         body_part = b;
         description = d;
