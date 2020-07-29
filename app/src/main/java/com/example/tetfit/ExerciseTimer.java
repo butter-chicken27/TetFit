@@ -2,6 +2,7 @@ package com.example.tetfit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -23,6 +24,7 @@ public class ExerciseTimer extends AppCompatActivity {
         durations = intent.getIntArrayExtra(MainActivity.durations_key);
         titles = intent.getStringArrayExtra(MainActivity.titles_key);
         play_exercise(durations, titles, size, header, time, 0);
+        this.finish();
     }
 
     void play_exercise(final int[] durations, final String[] titles, int size, final TextView title, final TextView time, int index){
@@ -39,6 +41,8 @@ public class ExerciseTimer extends AppCompatActivity {
             public void onFinish() {
                 if(i != s - 1){
                     play_exercise(durations, titles, s, title, time, i + 1);
+                }
+                else{
                 }
             }
         }.start();

@@ -28,19 +28,6 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
-            android:padding="@dimen/padding_head"
-            android:text="Disabled"
-            android:id="@+id/status"
-            android:textColor="#FF0000"
-            android:textSize="35sp"
-            android:visibility="invisible"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/header" />
 
         <ImageView
             android:layout_width="120dp"
@@ -84,5 +71,29 @@
                 android:layout_marginBottom="10dp"/>
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header"
+            tools:text="Description" />
+
+        <ImageView
+            android:id="@+id/yt_link"
+            android:layout_width="109dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="152dp"
+            android:layout_marginLeft="152dp"
+            android:layout_marginTop="144dp"
+            app:layout_constraintStart_toEndOf="@+id/header"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/yt_icon" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

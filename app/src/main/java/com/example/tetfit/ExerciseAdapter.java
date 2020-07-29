@@ -1,8 +1,11 @@
 package com.example.tetfit;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
 import android.database.DataSetObserver;
 import android.graphics.Color;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,10 +81,8 @@ class ExerciseAdapter implements ListAdapter{
                 @Override
                 public void onClick(View v) {
                     current.setBackgroundColor(Color.rgb(47,47,47));
-                    TextView stats = current.findViewById(R.id.status);
-                    stats.setVisibility(View.INVISIBLE);
                     int x = Integer.parseInt(String.valueOf(t.getText()));
-                    x += 5;
+                    x += 1;
                     e.increaseDuration();
                     t.setText(Integer.toString(x));
                 }
@@ -90,19 +91,36 @@ class ExerciseAdapter implements ListAdapter{
                 @Override
                 public void onClick(View v) {
                     int x = Integer.parseInt(String.valueOf(t.getText()));
-                    x -= 5;
+                    x -= 1;
                     if(x > 0) {
                         t.setText(Integer.toString(x));
                         e.decreaseDuration();
                     }
                     else{
                         current.setBackgroundColor(Color.RED);
-                        TextView stats = current.findViewById(R.id.status);
-                        stats.setVisibility(View.VISIBLE);
                         t.setText("0");
                         if(e.getDuration() != 0)
                         e.decreaseDuration();
                     }
+                }
+            });
+            Button des = convertView.findViewById(R.id.description);
+            des.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast toast = Toast.makeText(context, e.get_description(), Toast.LENGTH_LONG);
+                    toast.show();
+                }
+            });
+            ImageView yt = convertView.findViewById(R.id.yt_link);
+            yt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(e.get_Yt()));
+                    try{
+                        context.startActivity(webIntent);
+                    }
+                    catch (ActivityNotFoundException ex){}
                 }
             });
             TextView title = convertView.findViewById(R.id.header);

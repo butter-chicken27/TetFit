@@ -40,4 +40,10 @@ public class Exercise {
         if(duration != 0)
         duration -= 1;
     }
+    public String get_description(){
+        return description;
+    }
+    public String get_Yt(){
+        return Yt_URL;
+    }
 }
