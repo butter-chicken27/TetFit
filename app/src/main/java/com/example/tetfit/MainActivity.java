@@ -35,7 +35,7 @@ import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
     public static  final String titles_key = "com.example.android.tetfit.titles";
-    public static  final String durations_key = "com.example.android.tetfit.durations";
+    public static  final String counts_key = "com.example.android.tetfit.durations";
     public static  final String length_key = "com.example.android.tetfit.length";
 
     private ArrayList<Exercise> workout = new ArrayList<Exercise>();
@@ -63,20 +63,20 @@ public class MainActivity extends AppCompatActivity {
                         number++;
                 }
                 String exercise_title[] = new String[number];
-                int durations[] = new int[number];
+                int counts[] = new int[number];
                 int index = 0;
                 for(int i = 0; i < size; i++){
                     Exercise e = workout.get(i);
                     if(e.getDuration() > 0){
-                        durations[index] = e.getDuration();
+                        counts[index] = e.getDuration();
                         exercise_title[index] = e.getTitle();
                         index++;
                     }
                 }
-                Intent intent = new Intent(MainActivity.this, ExerciseTimer.class);
+                Intent intent = new Intent(MainActivity.this, customizeWorkout.class);
                 intent.putExtra(length_key, number);
                 intent.putExtra(titles_key, exercise_title);
-                intent.putExtra(durations_key, durations);
+                intent.putExtra(counts_key, counts);
                 startActivity(intent);
             }
         });

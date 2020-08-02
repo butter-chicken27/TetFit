@@ -46,4 +46,7 @@ public class Exercise {
     public String get_Yt(){
         return Yt_URL;
     }
+    public double get_rating(){
+        return rating;
+    }
 }

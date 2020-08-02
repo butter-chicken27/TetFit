@@ -18,11 +18,11 @@ public class ExerciseTimer extends AppCompatActivity {
         TextView header = findViewById(R.id.exec_title);
         final TextView time = findViewById(R.id.timer);
         Intent intent = getIntent();
-        int size = intent.getIntExtra(MainActivity.length_key, -2);
+        int size = intent.getIntExtra(customizeWorkout.length_key, -2);
         int durations[];
         String titles[];
-        durations = intent.getIntArrayExtra(MainActivity.durations_key);
-        titles = intent.getStringArrayExtra(MainActivity.titles_key);
+        durations = intent.getIntArrayExtra(customizeWorkout.times_key);
+        titles = intent.getStringArrayExtra(customizeWorkout.title_key);
         play_exercise(durations, titles, size, header, time, 0);
         this.finish();
     }

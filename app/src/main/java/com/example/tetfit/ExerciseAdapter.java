@@ -123,6 +123,8 @@ class ExerciseAdapter implements ListAdapter{
                     catch (ActivityNotFoundException ex){}
                 }
             });
+            TextView r = convertView.findViewById(R.id.rating);
+            r.setText(Double.toString(e.get_rating()));
             TextView title = convertView.findViewById(R.id.header);
             title.setText(e.getTitle());
             TextView d = convertView.findViewById(R.id.duration);
