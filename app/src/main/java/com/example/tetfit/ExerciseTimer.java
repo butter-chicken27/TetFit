@@ -24,7 +24,6 @@ public class ExerciseTimer extends AppCompatActivity {
         durations = intent.getIntArrayExtra(customizeWorkout.times_key);
         titles = intent.getStringArrayExtra(customizeWorkout.title_key);
         play_exercise(durations, titles, size, header, time, 0);
-        this.finish();
     }
 
     void play_exercise(final int[] durations, final String[] titles, int size, final TextView title, final TextView time, int index){
