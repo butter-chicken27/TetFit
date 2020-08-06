@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".customizeWorkout"></activity>
+        <activity android:name=".summaryDisplay"></activity>
+        <activity android:name=".customizeWorkout" />
         <activity
             android:name=".ExerciseTimer"
             android:label="Get Working"

@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     public static  final String titles_key = "com.example.android.tetfit.titles";
     public static  final String counts_key = "com.example.android.tetfit.durations";
     public static  final String length_key = "com.example.android.tetfit.length";
+    public static  final String body_key = "com.example.android.tetfit.body";
+    public static  final String intensity_key = "com.example.android.tetfit.intensity";
 
     private ArrayList<Exercise> workout = new ArrayList<Exercise>();
     private ExerciseAdapter adapter;
@@ -64,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 String exercise_title[] = new String[number];
                 int counts[] = new int[number];
+                int intensities[] = new int[number];
+                String parts[] = new String[number];
                 int index = 0;
                 for(int i = 0; i < size; i++){
                     Exercise e = workout.get(i);
@@ -77,13 +83,23 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(length_key, number);
                 intent.putExtra(titles_key, exercise_title);
                 intent.putExtra(counts_key, counts);
+                intent.putExtra(body_key, parts);
+                intent.putExtra(intensity_key, intensities);
+                startActivity(intent);
+            }
+        });
+        FloatingActionButton fab = findViewById(R.id.summary);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, summaryDisplay.class);
                 startActivity(intent);
             }
         });
     }
 
     private class getExercises extends AsyncTask<Void,Void, JSONArray> {
-        private String apiEndpoint = "http://ec2-3-18-111-115.us-east-2.compute.amazonaws.com/exercises";
+        private String apiEndpoint = "http://3.20.221.14/exercises/";
         private Context mContext;
         public getExercises(Context activityContext) {
             mContext = activityContext;

@@ -5,4 +5,7 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="red">#FF0000</color>
     <color name="item_bg">#2F2F2F</color>
+    <color name="body_red">#C62828</color>
+    <color name="body_orange">#EF6C00</color>
+    <color name="body_green">#8BC34A</color>
 </resources>
