@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class getExercises extends AsyncTask<Void,Void, JSONArray> {
-        private String apiEndpoint = "http://3.20.221.14/exercises/";
+        private String apiEndpoint = "http://10.0.2.2:5000/exercises";
         private Context mContext;
         public getExercises(Context activityContext) {
             mContext = activityContext;
