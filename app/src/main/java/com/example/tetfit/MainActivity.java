@@ -76,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
                     if(e.getDuration() > 0){
                         counts[index] = e.getDuration();
                         exercise_title[index] = e.getTitle();
+                        parts[index] = e.getBody_part();
+                        intensities[index] = e.getIntensity();
                         index++;
                     }
                 }
@@ -99,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class getExercises extends AsyncTask<Void,Void, JSONArray> {
-        private String apiEndpoint = "http://3.20.221.14/exercises/";
+        private String apiEndpoint = "http://18.188.175.235/exercises/";
         private Context mContext;
         public getExercises(Context activityContext) {
             mContext = activityContext;

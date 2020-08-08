@@ -49,4 +49,10 @@ public class Exercise {
     public double get_rating(){
         return rating;
     }
+    public String getBody_part(){
+        return body_part;
+    }
+    public int getIntensity(){
+        return intensity;
+    }
 }
