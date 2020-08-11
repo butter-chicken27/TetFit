@@ -19,8 +19,8 @@ public class summaryDisplay extends AppCompatActivity {
         first = mSharedPref.getString(ExerciseTimer.first_key, "");
         second = mSharedPref.getString(ExerciseTimer.second_key, "");
         third = mSharedPref.getString(ExerciseTimer.third_key, "");
-        Toast t = Toast.makeText(this, first + " " + second + " " + third, Toast.LENGTH_LONG);
-        t.show();
+        //Toast t = Toast.makeText(this, first + " " + second + " " + third, Toast.LENGTH_LONG);
+        //t.show();
         double count = 0;
         if(!(first.equals("")))
             count++;

@@ -39,8 +39,8 @@ public class ExerciseTimer extends AppCompatActivity {
         third = second;
         second = first;
         first = intent.getStringExtra(customizeWorkout.sum_key);
-        Toast t = Toast.makeText(this, first + " " + second + " " + third, Toast.LENGTH_LONG);
-        t.show();
+        //Toast t = Toast.makeText(this, first + " " + second + " " + third, Toast.LENGTH_LONG);
+        //t.show();
         SharedPreferences.Editor editor = mSharedPref.edit();
         editor.putString(first_key, first);
         editor.putString(second_key, second);

@@ -198,7 +198,6 @@ class ExerciseAdapter implements ListAdapter{
         @Override
         protected String doInBackground(Integer... integers) {
             int newRating = integers[0];
-            Log.e("UPDATERATING", "doInBackground: "+t1.getText() );
             String jsonRequestString = String.format("{\"name\":\"%s\",\"newRating\":%d}",t1.getText(),newRating);
 
             try {
