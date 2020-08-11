@@ -8,6 +8,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import  java.util.concurrent.TimeUnit;
 
 public class ExerciseTimer extends AppCompatActivity {
@@ -37,10 +39,13 @@ public class ExerciseTimer extends AppCompatActivity {
         third = second;
         second = first;
         first = intent.getStringExtra(customizeWorkout.sum_key);
+        Toast t = Toast.makeText(this, first + " " + second + " " + third, Toast.LENGTH_LONG);
+        t.show();
         SharedPreferences.Editor editor = mSharedPref.edit();
         editor.putString(first_key, first);
         editor.putString(second_key, second);
         editor.putString(third_key, third);
+        editor.apply();
         play_exercise(durations, titles, size, header, time, 0);
     }
 

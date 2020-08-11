@@ -11,7 +11,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-
+import java.util.concurrent.TimeUnit;
 public class customizeWorkout extends AppCompatActivity {
     public static final String length_key = "com.example.android.tetfit.exec.length";
     public static final String title_key = "com.example.android.tetfit.exec.titles";
@@ -117,6 +117,11 @@ public class customizeWorkout extends AppCompatActivity {
                     else
                         summary += "G";
                 }
+                /*try {
+                    TimeUnit.SECONDS.sleep(3);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }*/
                 Intent next = new Intent(customizeWorkout.this, ExerciseTimer.class);
                 next.putExtra(length_key, count);
                 next.putExtra(times_key, durations);

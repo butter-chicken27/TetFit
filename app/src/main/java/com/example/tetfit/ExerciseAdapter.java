@@ -1,15 +1,19 @@
 package com.example.tetfit;
 
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.DataSetObserver;
 import android.graphics.Color;
 import android.net.Uri;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
@@ -77,6 +81,23 @@ class ExerciseAdapter implements ListAdapter{
             final TextView t = convertView.findViewById(R.id.duration);
             Button b1 = convertView.findViewById(R.id.increment);
             Button b2 = convertView.findViewById(R.id.decrement);
+            final ImageView bodyImage = convertView.findViewById(R.id.body_image);
+            String body_part =  e.getBody_part();
+            if(body_part.equals("Chest")){
+                bodyImage.setBackgroundResource(R.drawable.Chest);
+            }
+            else if(body_part.equals("Back")){
+                bodyImage.setBackgroundResource(R.drawable.Back);
+            }
+            else if(body_part.equals("Hamstrings")){
+                bodyImage.setBackgroundResource(R.drawable.Thigh);
+            }
+            else if(body_part.equals("Triceps")){
+                bodyImage.setBackgroundResource(R.drawable.Tricep);
+            }
+            else if(body_part.equals("Calves")){
+                bodyImage.setBackgroundResource(R.drawable.Calf);
+            }
             b1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -129,6 +150,25 @@ class ExerciseAdapter implements ListAdapter{
             title.setText(e.getTitle());
             TextView d = convertView.findViewById(R.id.duration);
             d.setText(Integer.toString(e.getDuration()));
+            ImageView rate = convertView.findViewById(R.id.rate);
+            rate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setTitle("Rate Exercise");
+                    final EditText input = new EditText(context);
+                    input.setInputType(InputType.TYPE_CLASS_NUMBER);
+                    builder.setView(input);
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            String rating = input.getText().toString();
+                            int rate_value = Integer.parseInt(rating);
+
+                        }
+                    });
+                }
+            });
         }
         return convertView;
     }
