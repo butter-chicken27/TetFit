@@ -92,19 +92,19 @@ class ExerciseAdapter implements ListAdapter{
             final ImageView bodyImage = convertView.findViewById(R.id.body_image);
             String body_part =  e.getBody_part();
             if(body_part.equals("Chest")){
-                bodyImage.setBackgroundResource(R.drawable.Chest);
+                bodyImage.setBackgroundResource(R.drawable.chest);
             }
             else if(body_part.equals("Back")){
-                bodyImage.setBackgroundResource(R.drawable.Back);
+                bodyImage.setBackgroundResource(R.drawable.back);
             }
             else if(body_part.equals("Hamstrings")){
-                bodyImage.setBackgroundResource(R.drawable.Thigh);
+                bodyImage.setBackgroundResource(R.drawable.thigh);
             }
             else if(body_part.equals("Triceps")){
-                bodyImage.setBackgroundResource(R.drawable.Tricep);
+                bodyImage.setBackgroundResource(R.drawable.arm);
             }
             else if(body_part.equals("Calves")){
-                bodyImage.setBackgroundResource(R.drawable.Calf);
+                bodyImage.setBackgroundResource(R.drawable.calf);
             }
             b1.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -178,6 +178,7 @@ class ExerciseAdapter implements ListAdapter{
                             new updateRating().execute(queryInput);
                         }
                     });
+                    builder.show();
                 }
             });
         }
