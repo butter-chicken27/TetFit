@@ -164,9 +164,9 @@ class ExerciseAdapter implements ListAdapter{
                         public void onClick(DialogInterface dialog, int which) {
                             String rating = input.getText().toString();
                             int rate_value = Integer.parseInt(rating);
-                            
+
                         }
-                    })
+                    });
                 }
             });
         }
