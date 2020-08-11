@@ -158,7 +158,7 @@ class ExerciseAdapter implements ListAdapter{
             title.setText(e.getTitle());
             TextView d = convertView.findViewById(R.id.duration);
             d.setText(Integer.toString(e.getDuration()));
-            ImageView rate = convertView.findViewById(R.id.rate);
+            final ImageView rate = convertView.findViewById(R.id.rate);
             rate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -173,6 +173,9 @@ class ExerciseAdapter implements ListAdapter{
                             String rating = input.getText().toString();
                             int rate_value = Integer.parseInt(rating);
 
+                            Integer[] queryInput = {rate_value};
+
+                            new updateRating().execute(queryInput);
                         }
                     });
                 }
