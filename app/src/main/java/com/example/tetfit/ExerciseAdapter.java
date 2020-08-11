@@ -1,15 +1,19 @@
 package com.example.tetfit;
 
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.DataSetObserver;
 import android.graphics.Color;
 import android.net.Uri;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
@@ -146,6 +150,25 @@ class ExerciseAdapter implements ListAdapter{
             title.setText(e.getTitle());
             TextView d = convertView.findViewById(R.id.duration);
             d.setText(Integer.toString(e.getDuration()));
+            ImageView rate = convertView.findViewById(R.id.rate);
+            rate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setTitle("Rate Exercise");
+                    final EditText input = new EditText(context);
+                    input.setInputType(InputType.TYPE_CLASS_NUMBER);
+                    builder.setView(input);
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            String rating = input.getText().toString();
+                            int rate_value = Integer.parseInt(rating);
+                            
+                        }
+                    })
+                }
+            });
         }
         return convertView;
     }

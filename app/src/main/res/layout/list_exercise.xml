@@ -101,11 +101,11 @@
             app:srcCompat="@mipmap/vid_icon" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/rate"
             android:layout_width="32dp"
             android:layout_height="41dp"
-            android:layout_marginStart="100dp"
-            android:layout_marginLeft="100dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="60dp"
             android:layout_marginTop="148dp"
             app:layout_constraintStart_toEndOf="@+id/header"
             app:layout_constraintTop_toTopOf="parent"
