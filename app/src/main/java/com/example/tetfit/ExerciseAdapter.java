@@ -92,19 +92,19 @@ class ExerciseAdapter implements ListAdapter{
             final ImageView bodyImage = convertView.findViewById(R.id.body_image);
             String body_part =  e.getBody_part();
             if(body_part.equals("Chest")){
-                bodyImage.setBackgroundResource(R.drawable.chest);
+                bodyImage.setBackgroundResource(R.drawable.ch);
             }
             else if(body_part.equals("Back")){
-                bodyImage.setBackgroundResource(R.drawable.back);
+                bodyImage.setBackgroundResource(R.drawable.b);
             }
             else if(body_part.equals("Hamstrings")){
-                bodyImage.setBackgroundResource(R.drawable.thigh);
+                bodyImage.setBackgroundResource(R.drawable.t);
             }
             else if(body_part.equals("Triceps")){
-                bodyImage.setBackgroundResource(R.drawable.arm);
+                bodyImage.setBackgroundResource(R.drawable.a);
             }
             else if(body_part.equals("Calves")){
-                bodyImage.setBackgroundResource(R.drawable.calf);
+                bodyImage.setBackgroundResource(R.drawable.c);
             }
             b1.setOnClickListener(new View.OnClickListener() {
                 @Override
