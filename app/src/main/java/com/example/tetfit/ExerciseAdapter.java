@@ -33,6 +33,7 @@ class ExerciseAdapter implements ListAdapter{
     ArrayList<Exercise> arrayList;
     Context context;
     Exercise e;
+    TextView t1;
     public ExerciseAdapter(Context context, ArrayList<Exercise> arrayList) {
         this.arrayList=arrayList;
         this.context=context;
@@ -82,6 +83,7 @@ class ExerciseAdapter implements ListAdapter{
     @Override
     public View getView(final int position, View convertView, ViewGroup parent){
         e = arrayList.get(position);
+
         if(convertView == null){
             LayoutInflater layoutInflater = LayoutInflater.from(context);
             convertView = layoutInflater.inflate(R.layout.list_exercise, null);
@@ -89,6 +91,8 @@ class ExerciseAdapter implements ListAdapter{
             final TextView t = convertView.findViewById(R.id.duration);
             Button b1 = convertView.findViewById(R.id.increment);
             Button b2 = convertView.findViewById(R.id.decrement);
+            t1 = convertView.findViewById(R.id.header);
+
             final ImageView bodyImage = convertView.findViewById(R.id.body_image);
             String body_part =  e.getBody_part();
             if(body_part.equals("Chest")){
@@ -167,13 +171,16 @@ class ExerciseAdapter implements ListAdapter{
                     final EditText input = new EditText(context);
                     input.setInputType(InputType.TYPE_CLASS_NUMBER);
                     builder.setView(input);
+                    final String rating = input.getText().toString();
+
                     builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            String rating = input.getText().toString();
-                            int rate_value = Integer.parseInt(rating);
+                            double rate_value = Double.parseDouble(rating);
 
-                            Integer[] queryInput = {rate_value};
+                            int rate_value_int = (int)rate_value;
+
+                            Integer[] queryInput = {rate_value_int};
 
                             new updateRating().execute(queryInput);
                         }
@@ -188,11 +195,11 @@ class ExerciseAdapter implements ListAdapter{
     private class updateRating extends AsyncTask<Integer,Void,String> {
 
         String updateEndpoint = "http://18.188.175.235/exercises/updateRating";
-
         @Override
         protected String doInBackground(Integer... integers) {
             int newRating = integers[0];
-            String jsonRequestString = String.format("{\"name\":\"%s\",\"newRating\":\"%d\"}",e.getTitle(),newRating);
+            Log.e("UPDATERATING", "doInBackground: "+t1.getText() );
+            String jsonRequestString = String.format("{\"name\":\"%s\",\"newRating\":%d}",t1.getText(),newRating);
 
             try {
                 URL obj = new URL(updateEndpoint);
@@ -233,6 +240,8 @@ class ExerciseAdapter implements ListAdapter{
             super.onPostExecute(s);
             if(s==null) {
                 Log.e("UPDATERATING", "onPostExecute: Error in Updating Rating");
+            } else {
+                Log.e("UPDATERATING", "onPostExecute: "+s );
             }
         }
     }
