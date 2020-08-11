@@ -8,7 +8,9 @@ import android.content.Intent;
 import android.database.DataSetObserver;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,12 +21,18 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 
 class ExerciseAdapter implements ListAdapter{
     ArrayList<Exercise> arrayList;
     Context context;
+    Exercise e;
     public ExerciseAdapter(Context context, ArrayList<Exercise> arrayList) {
         this.arrayList=arrayList;
         this.context=context;
@@ -73,7 +81,7 @@ class ExerciseAdapter implements ListAdapter{
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent){
-        final Exercise e = arrayList.get(position);
+        e = arrayList.get(position);
         if(convertView == null){
             LayoutInflater layoutInflater = LayoutInflater.from(context);
             convertView = layoutInflater.inflate(R.layout.list_exercise, null);
@@ -171,5 +179,57 @@ class ExerciseAdapter implements ListAdapter{
             });
         }
         return convertView;
+    }
+
+    private class updateRating extends AsyncTask<Integer,Void,String> {
+
+        String updateEndpoint = "http://18.188.175.235/exercises/updateRating";
+
+        @Override
+        protected String doInBackground(Integer... integers) {
+            int newRating = integers[0];
+            String jsonRequestString = String.format("{\"name\":\"%s\",\"newRating\":\"%d\"}",e.getTitle(),newRating);
+
+            try {
+                URL obj = new URL(updateEndpoint);
+
+                HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+                con.setRequestMethod("POST");
+                con.setRequestProperty("Content-Type","application/json");
+
+                con.setDoOutput(true);
+                OutputStream os = con.getOutputStream();
+                byte[] input = jsonRequestString.getBytes("UTF-8");
+                os.write(input,0,input.length);
+                os.flush();
+                os.close();
+
+                int responseCode = con.getResponseCode();
+
+                if(responseCode==HttpURLConnection.HTTP_OK) {
+                    BufferedReader in = new BufferedReader(new InputStreamReader((con.getInputStream())));
+                    String inputLine;
+
+                    StringBuffer response = new StringBuffer();
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+                    return response.toString();
+                } else {
+                    return null;
+                }
+            } catch (Exception e) {
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            if(s==null) {
+                Log.e("UPDATERATING", "onPostExecute: Error in Updating Rating");
+            }
+        }
     }
 }
