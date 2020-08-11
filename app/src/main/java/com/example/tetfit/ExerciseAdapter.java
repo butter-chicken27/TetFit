@@ -77,6 +77,23 @@ class ExerciseAdapter implements ListAdapter{
             final TextView t = convertView.findViewById(R.id.duration);
             Button b1 = convertView.findViewById(R.id.increment);
             Button b2 = convertView.findViewById(R.id.decrement);
+            final ImageView bodyImage = convertView.findViewById(R.id.body_image);
+            String body_part =  e.getBody_part();
+            if(body_part.equals("Chest")){
+                bodyImage.setBackgroundResource(R.drawable.Chest);
+            }
+            else if(body_part.equals("Back")){
+                bodyImage.setBackgroundResource(R.drawable.Back);
+            }
+            else if(body_part.equals("Hamstrings")){
+                bodyImage.setBackgroundResource(R.drawable.Thigh);
+            }
+            else if(body_part.equals("Triceps")){
+                bodyImage.setBackgroundResource(R.drawable.Tricep);
+            }
+            else if(body_part.equals("Calves")){
+                bodyImage.setBackgroundResource(R.drawable.Calf);
+            }
             b1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
