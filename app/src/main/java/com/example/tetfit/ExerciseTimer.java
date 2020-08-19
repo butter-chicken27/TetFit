@@ -65,6 +65,8 @@ public class ExerciseTimer extends AppCompatActivity {
                     play_exercise(durations, titles, s, title, time, i + 1);
                 }
                 else{
+                    Intent summary = new Intent(ExerciseTimer.this, summaryDisplay.class);
+                    startActivity(summary);
                 }
             }
         }.start();
