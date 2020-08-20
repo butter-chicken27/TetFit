@@ -156,7 +156,7 @@ class ExerciseAdapter implements ListAdapter{
             rate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    /*AlertDialog.Builder builder = new AlertDialog.Builder(context);
                     builder.setTitle("Rate Exercise");
                     final EditText input = new EditText(context);
                     input.setInputType(InputType.TYPE_CLASS_NUMBER);
@@ -169,7 +169,7 @@ class ExerciseAdapter implements ListAdapter{
                             int rate_value = Integer.parseInt(rating);
                         }
                     });
-                    builder.show();
+                    builder.show();*/
                 }
             });
         }
