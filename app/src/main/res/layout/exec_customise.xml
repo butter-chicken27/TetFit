@@ -62,7 +62,11 @@
             android:id="@+id/rating_launcher"
             android:layout_width="52dp"
             android:layout_height="52dp"
+            android:layout_marginLeft="4dp"
+            android:contentDescription="TODO"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/increment"
             app:layout_constraintStart_toEndOf="@+id/title_exercise"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/play_arrow_foreground" />
