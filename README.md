@@ -15,10 +15,13 @@ TetFit aims to deliver an easy-to-use, informative and robust workout experience
 - Once durations are finalized, a workout countdown timer is launched for each exercise and relevant info to the workout is stored locally.
 - A floating action button on the home activity opens into a body condition report for the user based on past workouts.
 
+
 ## Hardware requirements
 Minimum SDK version 15
 
-[Backend](https://github.com/peppermenta/TetFit-backend)
+## Relevant material
+- [Featureset explanation](https://github.com/butter-chicken27/TetFit/tree/master/Featureset_outline)
+- [Backend](https://github.com/peppermenta/TetFit-backend)
 
 ## Maintainers
 This project is mantained by:
