@@ -20,7 +20,7 @@ TetFit aims to deliver an easy-to-use, informative and robust workout experience
 Minimum SDK version 15
 
 ## Relevant material
-- [Featureset explanation](https://github.com/butter-chicken27/TetFit/tree/master/Featureset_outline)
+- [Screenshots](https://github.com/butter-chicken27/TetFit/tree/master/Featureset_outline)
 - [Backend](https://github.com/peppermenta/TetFit-backend)
 
 ## Maintainers
