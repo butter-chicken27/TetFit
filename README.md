@@ -18,6 +18,8 @@ TetFit aims to deliver an easy-to-use, informative and robust workout experience
 ## Hardware requirements
 Minimum SDK version 15
 
+[Backend](https://github.com/peppermenta/TetFit-backend)
+
 ## Maintainers
 This project is mantained by:
 * [Agraj Srivastava](https://github.com/butter-chicken27)
