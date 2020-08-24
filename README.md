@@ -15,7 +15,22 @@ TetFit aims to deliver an easy-to-use, informative and robust workout experience
 - Once durations are finalized, a workout countdown timer is launched for each exercise and relevant info to the workout is stored locally.
 - A floating action button on the home activity opens into a body condition report for the user based on past workouts.
 
+## Features
+###### 1. Home activity
+  - Exercise catalogue fetched from server hosted on AWS and displayed in the form of "custom views" through the ListAdapter class.
+  - User rating fetched from server for each exercise and displayed in the respective exercise item.
+  - Description button displays detailed info on each exercise in the form of a Toast message.
+  - Play button launches into relevant exercise video on YouTube through an explicit intent.
+###### 2. Duration modifier activity
+  - Selected exercises and relevant information transferred from home activity via an implicit intent and displayed in list form using the ArrayAdapter class.
+  - Star button lauches AlertDialogBox to enable user to rate exrcise; changes reflected on the server.
+  - Relative workload calculation with respect to muscle groups made for overall workout and information transferred to timer activity through an implicit intent.
+###### 3. Timer activity
+  - Dataset modified to remove third from last workout and incorporate current workout information; workload information for user stored locally in a SharedPreferences file.
+  - CountdownTimer sequentially launched with respective durations for each rep in the workout.
 
+###### 4. Status activity
+  - Workload data imported from SharedPreferences file and "muscle groups views" set to appropriate colours.
 ## Hardware requirements
 Minimum SDK version 15
 
